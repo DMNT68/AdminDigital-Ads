@@ -1,0 +1,51 @@
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <input #input (keyup)="buscarProducto(input.value)" type="text" class="form-control" placeholder="Buscar producto...">
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="text-right">
+                            <button [routerLink]="['/producto','nuevo']" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
+                          <i class="fa fa-plus"></i> Crear Producto
+                        </button>
+                        </div>
+
+                        <h3 class="card-title"> Productos Registrados (<small>{{_productoService.totalProductos}}</small>)</h3>
+
+                        <table *ngFor="let producto of productos" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Imagen</th>
+                                    <th>Producto</th>
+                                    <th>Categoria</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><img [src]="producto.img | imagen:'producto'" class="img-50 img-circleS"></td>
+                                    <td>{{producto.nombre}}</td>
+                                    <td>{{producto.categoria.descripcion}}</td>
+                                    <td>
+                                        <button [routerLink]="['/producto', producto._id]" class="btn btn-primary"><i class="fa fa-edit"></i></button>
+                                        <button (click)="borrarProducto(producto)" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
