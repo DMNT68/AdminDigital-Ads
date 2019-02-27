@@ -88,7 +88,7 @@ export class ProductoService {
   
       return this.http.post(url, producto, {headers: headers})
       .pipe(map((resp: any) => {
-        Swal.fire('Médico creado', producto.nombre, 'success');
+        Swal.fire('Producto creado', producto.nombre, 'success');
         return resp.producto;
       }));
     }

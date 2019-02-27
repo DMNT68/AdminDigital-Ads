@@ -154,6 +154,7 @@ export class UsuarioService {
       'Content-Type': 'application/json; charset=utf-8',
       'token': this.token
     });
+    
     return this.http.put(url, usuario, {headers: header})
     .pipe(map((resp: any) => {
       

@@ -25,11 +25,11 @@ export class ProfileComponent implements OnInit {
   guardar(usuario: Usuario) {
     
     this.usuario.nombre = usuario.nombre;
+    this.usuario.telefono = usuario.telefono;
     if (!this.usuario.google) {
       this.usuario.email = usuario.email;
     }
-    this._usuarioServices.actualizarUsuario(this.usuario)
-    .subscribe();
+    this._usuarioServices.actualizarUsuario(this.usuario).subscribe();
   }
 
   seleccionImagen(archivo: File) {

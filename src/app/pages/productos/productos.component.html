@@ -21,20 +21,22 @@
 
                         <h3 class="card-title"> Productos Registrados (<small>{{_productoService.totalProductos}}</small>)</h3>
 
-                        <table *ngFor="let producto of productos" class="table table-hover">
+                        <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th>Imagen</th>
                                     <th>Producto</th>
                                     <th>Categoria</th>
+                                    <th>Estado</th>
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody *ngFor="let producto of productos">
                                 <tr>
                                     <td><img [src]="producto.img | imagen:'producto'" class="img-50 img-circleS"></td>
                                     <td>{{producto.nombre}}</td>
                                     <td>{{producto.categoria.descripcion}}</td>
+                                    <td>{{producto.disponible}}</td>
                                     <td>
                                         <button [routerLink]="['/producto', producto._id]" class="btn btn-primary"><i class="fa fa-edit"></i></button>
                                         <button (click)="borrarProducto(producto)" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
