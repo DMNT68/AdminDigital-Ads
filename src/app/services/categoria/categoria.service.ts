@@ -67,7 +67,7 @@ export class CategoriaService {
 
   buscarCategoria(termino: string) {
 
-    let url = URL_SERVICIOS + '/busqueda/coleccion/categorias/' + termino;
+    let url = URL_SERVICIOS + '/categoria/buscar/' + termino;
 
     return this.http.get(url).pipe(map((resp: any) => resp.categorias));
 

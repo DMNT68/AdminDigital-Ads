@@ -40,7 +40,7 @@ export class ProductoService {
 
   buscarProductos(termino: string) {
 
-    let url = URL_SERVICIOS + '/busqueda/coleccion/productos/' + termino;
+    let url = URL_SERVICIOS + '/producto/buscar/' + termino;
     return this.http.get(url).
     pipe(map((resp: any) => resp.productos));
 
