@@ -11,6 +11,10 @@ import { ProductoService } from '../../services/service.index';
 export class ProductosComponent implements OnInit {
 
   productos: Producto [] = [];
+  desde: number = 0;
+  totalRegistros: number = 0;
+  cargando: boolean = true;
+
 
   constructor(public _productoService: ProductoService) { }
   
@@ -20,7 +24,10 @@ export class ProductosComponent implements OnInit {
 
   cargarProductos() {
     this._productoService.cargarProductos()
-      .subscribe(productos => this.productos = productos);
+      .subscribe(productos => {
+        this.productos = productos;
+        this.cargando = false;
+      });
     
   }
 
@@ -36,15 +43,28 @@ export class ProductosComponent implements OnInit {
 
   }
 
-  crearProducto() {}
-
-  editarProducto() {}
 
   borrarProducto(producto: Producto) {
 
     this._productoService.borrarProductos(producto._id)
     .subscribe(() => this.cargarProductos());
     
+  }
+
+  cambiarDesde(valor: number) {
+
+    let desde = this.desde + valor;
+    if (desde >= this.totalRegistros) {
+      return;
+    }
+
+    if (desde < 0) {
+      return;
+    }
+
+    this.desde += valor;
+    this.cargarProductos();
+
   }
 
 }
