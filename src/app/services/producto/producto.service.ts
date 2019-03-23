@@ -25,7 +25,8 @@ export class ProductoService {
     return this.http.get(url)
     .pipe(map( (resp: any) => {
       this.totalProductos = resp.total;
-        return resp.productos;
+      console.log(this.totalProductos);
+      return resp.productos;
     }));
 
   }

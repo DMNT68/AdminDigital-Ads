@@ -12,7 +12,6 @@ export class ProductosComponent implements OnInit {
 
   productos: Producto [] = [];
   desde: number = 0;
-  totalRegistros: number = 0;
   cargando: boolean = true;
 
 
@@ -51,20 +50,5 @@ export class ProductosComponent implements OnInit {
     
   }
 
-  cambiarDesde(valor: number) {
-
-    let desde = this.desde + valor;
-    if (desde >= this.totalRegistros) {
-      return;
-    }
-
-    if (desde < 0) {
-      return;
-    }
-
-    this.desde += valor;
-    this.cargarProductos();
-
-  }
 
 }
