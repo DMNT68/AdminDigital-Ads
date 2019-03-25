@@ -12,10 +12,10 @@ import { LoginGuardGuard } from './services/guards/login-guard.guard';
 
 
 const appRoutes: Routes = [
-    {path: 'login', component: LoginComponent },
-    {path: 'register', component: RegisterComponent},
-    {path: '', component: PagesComponent, canActivate: [LoginGuardGuard], loadChildren: './pages/pages.module#PagesModule'},
-    {path: '**', component: NopagefoundComponent},
+    {path: 'login', component: LoginComponent,  data: {titulo: 'Iniciar Sesión'}},
+    {path: 'register', component: RegisterComponent,  data: {titulo: 'Registar Cuenta'}},
+    {path: '', component: PagesComponent, canActivate: [LoginGuardGuard], loadChildren: './pages/pages.module#PagesModule',},
+    {path: '**', component: NopagefoundComponent,  data: {titulo: 'No encontrado'}},
 ];
 
 export const APP_ROUTES =  RouterModule.forRoot(appRoutes, {useHash: true});
