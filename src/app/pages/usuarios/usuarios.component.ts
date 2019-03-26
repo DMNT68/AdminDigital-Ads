@@ -110,5 +110,11 @@ export class UsuariosComponent implements OnInit {
     this._usuarioServices.actualizarUsuario(usuario)
     .subscribe();
   }
+
+  activarUsuario(usuario: Usuario) {
+    usuario.estado = true;
+    this._usuarioServices.actualizarUsuario(usuario)
+    .subscribe();
+  }
   
 }
