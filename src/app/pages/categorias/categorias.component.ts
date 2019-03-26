@@ -15,9 +15,10 @@ export class CategoriasComponent implements OnInit {
 
   categorias: [] = [];
  
-  constructor(public _categoriaService: CategoriaService, public _modalUploadService: ModalUploadService) { }
+  constructor(public _categoriaService: CategoriaService, public _modalUploadService: ModalUploadService) {}
 
   ngOnInit() {
+
     this.cargarCategorias();
 
     this._modalUploadService.notificacion
@@ -30,7 +31,7 @@ export class CategoriasComponent implements OnInit {
     .subscribe(categorias => this.categorias = categorias);
       
   }
-
+  
   buscarCategoria(termino: string) {
 
     if (termino.length <= 0) {
@@ -44,7 +45,7 @@ export class CategoriasComponent implements OnInit {
   }
 
   guardarCategoria(categoria: Categoria) {
-
+    
     this._categoriaService.actualizarCategoria(categoria)
     .subscribe(() => this.cargarCategorias());
 
@@ -53,8 +54,17 @@ export class CategoriasComponent implements OnInit {
 
   borrarCategoria(categoria: Categoria) {
 
-      this._categoriaService.borrarCategoria(categoria._id)
-      .subscribe(() => this.cargarCategorias());
+    this._categoriaService.borrarCategoria(categoria._id)
+    .subscribe(() => this.cargarCategorias());
+
+  }
+
+  activarCategoria(categoria: Categoria) {
+
+    categoria.estado = true;
+    
+    this._categoriaService.actualizarCategoria(categoria)
+    .subscribe(() => this.cargarCategorias());
 
   }
 

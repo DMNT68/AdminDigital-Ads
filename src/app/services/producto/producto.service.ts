@@ -25,7 +25,6 @@ export class ProductoService {
     return this.http.get(url)
     .pipe(map( (resp: any) => {
       this.totalProductos = resp.total;
-      console.log(this.totalProductos);
       return resp.productos;
     }));
 
@@ -49,7 +48,7 @@ export class ProductoService {
 
   borrarProductos(id: string) {
 
-    let url = URL_SERVICIOS + '/medico/' + id;
+    let url = URL_SERVICIOS + '/producto/' + id;
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',

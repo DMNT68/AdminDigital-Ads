@@ -28,7 +28,7 @@
 
                             <select (change)="cambioCategoria($event.target.value)" [(ngModel)]="producto.categoria" name="categoria" class="form-control">
                               <option value="">Seleccione un categoría</option>
-                              <option *ngFor="let categoria of categorias"  [value]="categoria._id">
+                              <option *ngFor="let categoria of categorias" [disabled]="!categoria.estado" [value]="categoria._id">
                                 {{categoria.descripcion}}
                               </option>
                             </select>

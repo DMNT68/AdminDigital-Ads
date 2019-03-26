@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
 export class CategoriaService {
 
   totalCategorias: number = 0;
+  categoria: Categoria;
 
   constructor(public http: HttpClient, public _usuarioService: UsuarioService) { }
 
@@ -89,6 +90,5 @@ export class CategoriaService {
     }));
 
   }
-
 
 }

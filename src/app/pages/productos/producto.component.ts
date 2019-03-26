@@ -41,10 +41,12 @@ export class ProductoComponent implements OnInit {
   ngOnInit() {
 
     this._categoriaService.cargarCategorias()
-    .subscribe(categorias => this.categorias = categorias);
+    .subscribe(categorias =>{
+       this.categorias = categorias;
+      });
 
     this._modalUploadService.notificacion
-    .subscribe(resp => this.producto.img = resp.producto.img);
+    .subscribe((resp: any) => this.producto.img = resp.producto.img);
 
   }
 

@@ -27,17 +27,20 @@
                     <thead>
                         <tr>
                             <th>Categoría</th>
-                            <th></th>
+                            <th>Estado</th>
+                            <th>Opciones</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         <tr *ngFor="let categoria of categorias">
 
-                            <td> <input [(ngModel)]="categoria.descripcion" name="descripcion" type="text" class="form-control" placeholder="Categoría"> </td>
+                            <td> <input [(ngModel)]="categoria.descripcion" [disabled]="!categoria.estado" name="descripcion" type="text" class="form-control" placeholder="Categoría"> </td>
+                            <td>{{categoria.estado}}</td>
                             <td>
-                                <button (click)="guardarCategoria(categoria)" class="btn btn-primary"><i class="fa fa-save"></i></button>
-                                <button (click)="borrarCategoria(categoria)" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
+                                <button (click)="guardarCategoria(categoria)" [disabled]="!categoria.estado" class="btn btn-primary"><i class="fa fa-save"></i></button>
+                                <button (click)="borrarCategoria(categoria)" [disabled]="!categoria.estado" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
+                                <button (click)="activarCategoria(categoria)" [disabled]="categoria.estado" class="btn btn-success"><i class="fa fa-check-square"></i></button>
                             </td>
                         </tr>
                     </tbody>
