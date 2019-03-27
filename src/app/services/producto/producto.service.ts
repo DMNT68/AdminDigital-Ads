@@ -20,7 +20,7 @@ export class ProductoService {
 
   cargarProductos() {
 
-    let url = URL_SERVICIOS + '/producto';
+    let url = URL_SERVICIOS + '/productoAdmin';
 
     return this.http.get(url)
     .pipe(map( (resp: any) => {

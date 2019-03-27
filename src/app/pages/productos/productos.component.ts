@@ -50,5 +50,10 @@ export class ProductosComponent implements OnInit {
     
   }
 
+  activarProducto(producto: Producto) {
+    producto.disponible = true;
+    this._productoService.guardarProducto(producto).subscribe()
+  }
+
 
 }
