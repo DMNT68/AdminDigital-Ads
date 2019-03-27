@@ -36,7 +36,7 @@
                         <tr *ngFor="let categoria of categorias">
 
                             <td> <input [(ngModel)]="categoria.descripcion" [disabled]="!categoria.estado" name="descripcion" type="text" class="form-control" placeholder="Categoría"> </td>
-                            <td>{{categoria.estado}}</td>
+                            <td><label class="label label-light-success">{{categoria.estado}}</label></td>
                             <td>
                                 <button (click)="guardarCategoria(categoria)" [disabled]="!categoria.estado" class="btn btn-primary"><i class="fa fa-save"></i></button>
                                 <button (click)="borrarCategoria(categoria)" [disabled]="!categoria.estado" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>

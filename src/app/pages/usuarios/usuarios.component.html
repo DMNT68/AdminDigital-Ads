@@ -36,6 +36,7 @@
                             <th>Nombre</th>
                             <th>Role</th>
                             <th>Auth</th>
+                            <th>Estado</th>
                             <th>Opciones</th>
                         </tr>
                     </thead>
@@ -55,6 +56,10 @@
                             <td>
                                 <label *ngIf="usuario.google" class="label label-danger">Google</label>
                                 <label *ngIf="!usuario.google" class="label label-info">Normal</label>
+                            </td>
+                            <td>
+                                <label class="label label-light-primary">{{usuario.estado}}</label>
+
                             </td>
                             <td>
                                 <button (click)="guardarUsuario(usuario)" [disabled]="!usuario.estado" class="btn btn-primary"><i class="fa fa-save"></i></button>
