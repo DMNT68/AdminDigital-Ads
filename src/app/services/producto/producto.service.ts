@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
 import { UsuarioService } from '../usuario/usuario.service';
 import Swal from 'sweetalert2';
 import { Producto } from '../../models/producto.model';
+import { Categoria } from '../../models/categoria.model';
 
 
 @Injectable({
@@ -15,6 +16,8 @@ import { Producto } from '../../models/producto.model';
 export class ProductoService {
 
   totalProductos: number = 0;
+  totalProductosPorCategoria: number = 0;
+
 
   constructor(public http: HttpClient, public _usuarioService: UsuarioService) { }
 
@@ -92,6 +95,18 @@ export class ProductoService {
         return resp.producto;
       }));
     }
+
+  }
+
+  cargarProductosByCategoria(id: string) {
+
+    let url = URL_SERVICIOS + '/producto/categoria/' + id;
+
+    return this.http.get(url)
+    .pipe(map( (resp: any) => {
+      this.totalProductosPorCategoria = resp.total;
+      return resp.productos;
+    }));
 
   }
 

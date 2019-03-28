@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Producto } from '../../models/producto.model';
 
-import { ProductoService } from '../../services/service.index';
+import { ProductoService, CategoriaService } from '../../services/service.index';
+import { Categoria } from 'src/app/models/categoria.model';
 
 @Component({
   selector: 'app-productos',
@@ -13,12 +15,19 @@ export class ProductosComponent implements OnInit {
   productos: Producto [] = [];
   desde: number = 0;
   cargando: boolean = true;
+  categorias: Categoria[] = [];
+  idcategoria: string;
 
 
-  constructor(public _productoService: ProductoService) { }
+  constructor(public _productoService: ProductoService, public _categoriaService: CategoriaService) { }
   
   ngOnInit() {
     this.cargarProductos();
+
+    this._categoriaService.cargarCategorias()
+    .subscribe(categorias =>{
+       this.categorias = categorias;
+      });
   }
 
   cargarProductos() {
@@ -53,6 +62,18 @@ export class ProductosComponent implements OnInit {
   activarProducto(producto: Producto) {
     producto.disponible = true;
     this._productoService.guardarProducto(producto).subscribe(() => this.cargarProductos());
+  }
+
+  cargarProductosPorCategoria() {
+    console.log(this.idcategoria);
+    if(this.idcategoria === "") {
+      this.cargarProductos();
+      return;
+    }
+    this._productoService.cargarProductosByCategoria(this.idcategoria).subscribe(productos => {
+      this.productos = productos;
+      console.log(this.productos);
+    });
   }
 
 

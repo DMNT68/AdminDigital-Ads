@@ -32,6 +32,19 @@
 
                         <h3 class="card-title"> Productos Registrados (<small>{{_productoService.totalProductos}}</small>)</h3>
 
+                        <div class="form-group">
+
+                            <label>Mostar Productos por categoría</label>
+
+                            <select (change)="cargarProductosPorCategoria($event.target.value)" [(ngModel)]="idcategoria" name="categoria" class="form-control">
+                              <option value="">Todas las categorías</option>
+                              <option *ngFor="let categoria of categorias" [disabled]="!categoria.estado" [value]="categoria._id">
+                                {{categoria.descripcion}}
+                              </option>
+                            </select>
+
+                        </div>
+
                         <table class="table table-hover">
                             <thead>
                                 <tr>

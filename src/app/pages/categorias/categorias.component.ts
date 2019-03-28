@@ -1,10 +1,13 @@
 import { Categoria } from '../../models/categoria.model';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { CategoriaService } from '../../services/service.index';
+import { CategoriaService , ProductoService} from '../../services/service.index';
 import { ModalUploadService } from '../../components/modal-upload/modal-upload.service';
 
 import Swal from 'sweetalert2';
+import { ProductosComponent } from '../productos/productos.component';
+
 
 @Component({
   selector: 'app-categorias',
@@ -14,8 +17,12 @@ import Swal from 'sweetalert2';
 export class CategoriasComponent implements OnInit {
 
   categorias: [] = [];
+  categoria: Categoria;
  
-  constructor(public _categoriaService: CategoriaService, public _modalUploadService: ModalUploadService) {}
+  constructor(public router: Router,
+              public _categoriaService: CategoriaService,
+              public _productoService: ProductoService,
+              public _modalUploadService: ModalUploadService) {}
 
   ngOnInit() {
 
