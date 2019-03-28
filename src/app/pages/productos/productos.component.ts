@@ -65,14 +65,14 @@ export class ProductosComponent implements OnInit {
   }
 
   cargarProductosPorCategoria() {
-    console.log(this.idcategoria);
+
     if(this.idcategoria === "") {
       this.cargarProductos();
       return;
     }
+    
     this._productoService.cargarProductosByCategoria(this.idcategoria).subscribe(productos => {
       this.productos = productos;
-      console.log(this.productos);
     });
   }
 
