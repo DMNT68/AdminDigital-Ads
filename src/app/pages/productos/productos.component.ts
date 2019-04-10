@@ -31,7 +31,7 @@ export class ProductosComponent implements OnInit {
   }
 
   cargarProductos() {
-    this._productoService.cargarProductos()
+    this._productoService.cargarProductos(this.desde)
       .subscribe(productos => {
         this.productos = productos;
         this.cargando = false;
@@ -66,7 +66,7 @@ export class ProductosComponent implements OnInit {
 
   cargarProductosPorCategoria() {
 
-    if(this.idcategoria === "") {
+    if (this.idcategoria === "") {
       this.cargarProductos();
       return;
     }
@@ -74,6 +74,22 @@ export class ProductosComponent implements OnInit {
     this._productoService.cargarProductosByCategoria(this.idcategoria).subscribe(productos => {
       this.productos = productos;
     });
+  }
+
+  cambiarDesde(valor: number) {
+
+    let desde = this.desde + valor;
+    if (desde >= this._productoService.totalProductos) {
+      return;
+    }
+
+    if (desde < 0) {
+      return;
+    }
+
+    this.desde += valor;
+    this.cargarProductos();
+
   }
 
 

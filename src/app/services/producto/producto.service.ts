@@ -21,9 +21,9 @@ export class ProductoService {
 
   constructor(public http: HttpClient, public _usuarioService: UsuarioService) { }
 
-  cargarProductos() {
+  cargarProductos(desde: number = 0) {
 
-    let url = URL_SERVICIOS + '/productoAdmin';
+    let url = URL_SERVICIOS + '/productoAdmin?desde=' + desde;
 
     return this.http.get(url)
     .pipe(map( (resp: any) => {
