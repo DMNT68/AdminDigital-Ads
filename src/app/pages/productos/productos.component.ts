@@ -17,15 +17,17 @@ export class ProductosComponent implements OnInit {
   cargando: boolean = true;
   categorias: Categoria[] = [];
   idcategoria: string;
+  habiltarBoton: boolean = true;
 
-
-  constructor(public _productoService: ProductoService, public _categoriaService: CategoriaService) { }
+  constructor(public _productoService: ProductoService, public _categoriaService: CategoriaService) {
+   }
   
   ngOnInit() {
+
     this.cargarProductos();
 
     this._categoriaService.cargarCategorias()
-    .subscribe(categorias =>{
+    .subscribe(categorias => {
        this.categorias = categorias;
       });
   }
@@ -66,17 +68,24 @@ export class ProductosComponent implements OnInit {
 
   cargarProductosPorCategoria() {
 
-    if (this.idcategoria === "") {
+    if (this.idcategoria === '') {
+      this.habiltarBoton = true;
       this.cargarProductos();
+      
       return;
     }
     
     this._productoService.cargarProductosByCategoria(this.idcategoria).subscribe(productos => {
       this.productos = productos;
+      this.habiltarBoton = false;
     });
   }
 
+
+  
+
   cambiarDesde(valor: number) {
+
 
     let desde = this.desde + valor;
     if (desde >= this._productoService.totalProductos) {

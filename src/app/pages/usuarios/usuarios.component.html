@@ -62,9 +62,9 @@
 
                             </td>
                             <td>
-                                <button (click)="guardarUsuario(usuario)" [disabled]="!usuario.estado" class="btn btn-primary"><i class="fa fa-save"></i></button>
-                                <button (click)="borrarUsuario(usuario)" [disabled]="!usuario.estado" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
-                                <button (click)="activarUsuario(usuario)" [disabled]="usuario.estado" class="btn btn-success"><i class="fa fa-check-square"></i></button>
+                                <button (click)="guardarUsuario(usuario)" *ngIf="usuario.estado" class="btn btn-primary"><i class="fa fa-save"></i></button>
+                                <button (click)="borrarUsuario(usuario)" *ngIf="usuario.estado" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
+                                <button (click)="activarUsuario(usuario)" *ngIf="!usuario.estado" class="btn btn-success"><i class="fa fa-check-square"></i></button>
                             </td>
                         </tr>
                     </tbody>

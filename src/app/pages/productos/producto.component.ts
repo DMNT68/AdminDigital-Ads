@@ -41,7 +41,7 @@ export class ProductoComponent implements OnInit {
   ngOnInit() {
 
     this._categoriaService.cargarCategorias()
-    .subscribe(categorias =>{
+    .subscribe(categorias => {
        this.categorias = categorias;
       });
 
