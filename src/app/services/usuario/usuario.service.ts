@@ -50,7 +50,6 @@ export class UsuarioService {
   }
 
   estaLogueado() {
-    console.log(this.token.length);
     return(this.token.length > 5 ) ? true : false; 
   }
 
@@ -149,7 +148,7 @@ export class UsuarioService {
 
   actualizarUsuario(usuario: Usuario) {
 
-    let url = URL_SERVICIOS + '/usuario/' + usuario._id;
+    let url = URL_SERVICIOS + '/usuarioAdmin/' + usuario._id;
     
     let header = new HttpHeaders({
       'Content-Type': 'application/json; charset=utf-8',
