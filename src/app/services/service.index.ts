@@ -7,7 +7,7 @@ export { UsuarioService } from './usuario/usuario.service';
 export { SubirArchivoService } from './subirArchivo/subir-archivo.service';
 export { CategoriaService } from './categoria/categoria.service';
 export { ProductoService } from './producto/producto.service';
-
+export { PedidosService } from './pedidos/pedidos.service';
 
 
 // Guards

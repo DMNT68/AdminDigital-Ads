@@ -23,6 +23,8 @@ import { CategoriasComponent } from './categorias/categorias.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
 import { ProductoComponent } from './productos/producto.component';
 import { ProductosComponent } from './productos/productos.component';
+import { PedidosComponent } from './pedidos/pedidos.component';
+import { DetallePedidoComponent } from './pedidos/detalle-pedido/detalle-pedido.component';
 
 
 
@@ -35,7 +37,9 @@ import { ProductosComponent } from './productos/productos.component';
         CategoriasComponent,
         ProductosComponent,
         ProductoComponent,
-        BusquedaComponent
+        BusquedaComponent,
+        PedidosComponent,
+        DetallePedidoComponent
     ],
     exports: [
         DashboardComponent

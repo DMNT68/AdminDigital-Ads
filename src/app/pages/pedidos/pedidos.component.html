@@ -1,0 +1,98 @@
+<div class="row animated fadeIn">
+    <div class="col-12">
+
+        <div class="row" animated fadeIn *ngIf="cargando">
+            <div class="col-sm-12">
+                <div class="aler alert-warning text-center">
+                    <strong>Cargando</strong>
+                    <br>
+                    <i class="fa fa-refresh fa-spin fa-2x"></i>
+                    <br>
+                    <span>Espere por favor</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" animated fadeIn *ngIf="!cargando">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h3 class="card-title"> Pedidos no Atendidos (<small>{{pedidosNoAtendidos.length}}</small>)</h3>
+
+                        <table class="table table-hover color-bordered-table info-bordered-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Fecha</th>
+                                    <th>Cliente</th>
+                                    <th>Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let pedido of pedidosNoAtendidos, let i = index">
+                                <tr>
+                                    <td>{{i+1}}</td>
+                                    <td>{{pedido.fechaCreacion | date: 'medium'}}</td>
+                                    <td>{{pedido.usuario.nombre}}</td>
+                                    <td><label class="label label-light-success">{{pedido.total}}</label></td>
+                                    <td>
+                                        <button [routerLink]="['/detalle-pedido', pedido._id]" class="btn btn-info" title="Ir al detalle del pedido"><i class="fa fa-arrow-right"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title"> Pedidos Atendidos (<small>{{pedidosAtendidos.length}}</small>)</h3>
+
+                        <table *ngIf="pedidosAtendidos.length !== 0" class="table table-hover color-bordered-table red-bordered-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Fecha</th>
+                                    <th>Cliente</th>
+                                    <th>Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody *ngFor="let pedido of pedidosAtendidos, let i = index">
+
+                                <tr>
+                                    <td>{{i+1}}</td>
+                                    <td>{{pedido.fechaCreacion | date: 'medium'}}</td>
+                                    <td>{{pedido.usuario.nombre}}</td>
+                                    <td><label class="label label-light-success">{{pedido.total}}</label></td>
+                                    <td>
+                                        <button [routerLink]="['/detalle-pedido', pedido._id]" class="btn btn-danger" title="Ir al detalle del pedido"><i class="fa fa-arrow-right"></i></button>
+                                    </td>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+                        <table *ngIf="pedidosAtendidos.length == 0" class="table table-hover color-bordered-table red-bordered-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Fecha</th>
+                                    <th>Cliente</th>
+                                    <th>Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <label class="text-center label-info">NO HAY REGISTROS</label>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

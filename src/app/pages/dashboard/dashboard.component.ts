@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductoService, UsuarioService, CategoriaService } from 'src/app/services/service.index';
+import { ProductoService, UsuarioService, CategoriaService,PedidosService } from 'src/app/services/service.index';
 
 
 @Component({
@@ -16,13 +16,15 @@ export class DashboardComponent implements OnInit {
   constructor(
     public _productoService: ProductoService,
     public _usuarioService: UsuarioService,
-    public _categoriaService: CategoriaService
+    public _categoriaService: CategoriaService,
+    public _ps: PedidosService
   ) { }
 
   ngOnInit() {
     this._productoService.cargarProductos().subscribe();
     this._usuarioService.cargarUsuarios().subscribe((resp: any) => this.totalUsuarios = resp.total);
     this._categoriaService.cargarCategorias().subscribe();
+    this._ps.cargarPedidos().subscribe();
   }
 
 }
