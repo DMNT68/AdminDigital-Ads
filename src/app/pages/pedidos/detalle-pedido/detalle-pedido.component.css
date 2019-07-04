@@ -1,0 +1,11 @@
+.color-footer {
+    background-color: #398BF7;
+    color: white;
+    font-weight: bold;
+}
+
+.card-padding {
+    align: center;
+    vertical-align: center;
+    padding-bottom: 170px;
+}

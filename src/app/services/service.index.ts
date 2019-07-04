@@ -11,6 +11,6 @@ export { PedidosService } from './pedidos/pedidos.service';
 
 
 // Guards
-export { LoginGuardGuard } from './guards/login-guard.guard';
+export { LoginGuard } from './guards/login.guard';
 export { AdminGuard } from './guards/admin.guard';
 export { VerificaTokenGuard } from './guards/verifica-token.guard';

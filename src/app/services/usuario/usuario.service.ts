@@ -213,7 +213,7 @@ export class UsuarioService {
     });
     
     return this.http.delete(url, {headers: headers})
-    .pipe(map(resp => {
+    .pipe(map(() => {
       Swal.fire('Usuario Borrado!', 'El usuario ha sido borrado.', 'success');
       return true;
     }));

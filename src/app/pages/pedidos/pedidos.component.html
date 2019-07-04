@@ -35,7 +35,7 @@
                                     <td>{{i+1}}</td>
                                     <td>{{pedido.fechaCreacion | date: 'medium'}}</td>
                                     <td>{{pedido.usuario.nombre}}</td>
-                                    <td><label class="label label-light-success">{{pedido.total}}</label></td>
+                                    <td><label class="label label-light-success">{{pedido.total | number:'.2-2'}}</label></td>
                                     <td>
                                         <button [routerLink]="['/detalle-pedido', pedido._id]" class="btn btn-info" title="Ir al detalle del pedido"><i class="fa fa-arrow-right"></i></button>
                                     </td>
@@ -48,7 +48,7 @@
                     <div class="card-body">
                         <h3 class="card-title"> Pedidos Atendidos (<small>{{pedidosAtendidos.length}}</small>)</h3>
 
-                        <table *ngIf="pedidosAtendidos.length !== 0" class="table table-hover color-bordered-table red-bordered-table">
+                        <table class="table table-hover color-bordered-table red-bordered-table">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -65,28 +65,13 @@
                                     <td>{{i+1}}</td>
                                     <td>{{pedido.fechaCreacion | date: 'medium'}}</td>
                                     <td>{{pedido.usuario.nombre}}</td>
-                                    <td><label class="label label-light-success">{{pedido.total}}</label></td>
+                                    <td><label class="label label-light-success">$ {{pedido.total | number:'.2-2'}}</label></td>
                                     <td>
                                         <button [routerLink]="['/detalle-pedido', pedido._id]" class="btn btn-danger" title="Ir al detalle del pedido"><i class="fa fa-arrow-right"></i></button>
                                     </td>
                                 </tr>
 
 
-                            </tbody>
-                        </table>
-                        <table *ngIf="pedidosAtendidos.length == 0" class="table table-hover color-bordered-table red-bordered-table">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Fecha</th>
-                                    <th>Cliente</th>
-                                    <th>Total</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <label class="text-center label-info">NO HAY REGISTROS</label>
                             </tbody>
                         </table>
 

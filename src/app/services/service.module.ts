@@ -10,7 +10,7 @@ import { SettingsService,
           CategoriaService,
           ProductoService,
           PedidosService,
-          LoginGuardGuard,
+          LoginGuard,
           AdminGuard
         } from './service.index';
 
@@ -34,7 +34,7 @@ import { ModalUploadService } from '../components/modal-upload/modal-upload.serv
     CategoriaService,
     ProductoService,
     PedidosService,
-    LoginGuardGuard,
+    LoginGuard,
     AdminGuard
   ]
 })

@@ -1,3 +1,130 @@
-<p>
-  detalle-pedido works!
-</p>
+<div class="animated fadeIn">
+
+    <div class="col-lg-12 ">
+
+        <div class="card">
+            <div class="card-body">
+
+                <h3 class="box-title">Información del cliente</h3>
+                <hr class="m-t-0 m-b-30">
+
+                <div class="card-body row">
+
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label class="control-label">Nombrel:</label>
+                            <div class="input-group">
+                                <label type="text" class="form-control">{{nombre}}</label>
+                                <div class="input-group-addon"><i class="ti-email"></i></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Email:</label>
+                            <div class="input-group">
+                                <label type="text" class="form-control">{{email}}</label>
+                                <div class="input-group-addon"><i class="ti-email"></i></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Teléfono:</label>
+                            <div class="input-group">
+                                <label type="text" class="form-control">{{telefono}}</label>
+                                <div class="input-group-addon"><i class="ti-email"></i></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--/span-->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label"> Fotografía: </label>
+                            <div align="center">
+                                <img *ngIf="!imagenTemp" [src]="img | imagen" class="w150">
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+        <div class="card row">
+            <div class="card-body">
+
+                <h3 class="box-title">Información del pedido</h3>
+                <hr class="m-t-0 m-b-40">
+
+                <div class="form-group row">
+                    <label class="col-sm-3 control-label">Fecha:</label>
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                            <label type="text" class="form-control">{{maestro.fechaCreacion | date:'fullDate'}}</label>
+                            <div class="input-group-addon"><i class="ti-calendar"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 control-label">Número de productos:</label>
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                            <label type="text" class="form-control">{{totalItems}}</label>
+                            <div class="input-group-addon"><i class="ti-calendar"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 control-label">Atendido:</label>
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                            <label type="text" class="form-control" *ngIf="maestro.atendido">SI</label>
+                            <label type="text" class="form-control" *ngIf="!maestro.atendido">NO</label>
+                            <div class="input-group-addon">
+                                <button (click)="atenderPedido(maestro._id)" *ngIf="!maestro.atendido" type="button" class="btn waves-effect waves-light btn-outline-success btn-xs">Atender</button>
+                                <!-- <button (click)="_us.atenderPedido(maestro._id)" *ngIf="!maestro.atendido" type="button" class="btn waves-effect waves-light btn-outline-success btn-xs">Atender</button> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="table table-hover color-bordered-table info-bordered-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Medidas(hxl)</th>
+                            <th>Letras</th>
+                            <th>SubTotal</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let item of detalle">
+                        <tr>
+                            <td><img [src]="item.producto.img | imagen:'producto'" class="img-50 img-circle"></td>
+                            <td>{{item.producto.nombre}}</td>
+                            <td>{{item.cantidad}}</td>
+                            <td>{{item.ancho}}x{{item.altura}}</td>
+                            <td>{{item.numeroLetras}}</td>
+                            <td><label class="label label-light-success">$ {{item.precioFinal | number:'.2-2'}}</label></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="color-footer">TOTAL:</td>
+                            <td class="color-footer"><label class="label label-light-success">$ {{maestro.total | number:'.2-2'}}</label></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
