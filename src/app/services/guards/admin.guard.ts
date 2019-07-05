@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+
 import { UsuarioService } from '../usuario/usuario.service';
 
 @Injectable({
@@ -14,10 +14,9 @@ export class AdminGuard implements CanActivate {
 
     if (this._usuarioService.usuario.role === 'ADMIN_ROLE' ) {
       return true;
-
     } else {
       this._usuarioService.logout();
-      console.log('Bloqueado por el adminguard');
+
     }
 
   }

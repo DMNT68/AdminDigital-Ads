@@ -48,12 +48,7 @@ export class PedidosService {
   }
 
   atenderPedido(id: string) {
-
-    console.log(id);
-
-    console.log('atendiendo');
     let url = URL_SERVICIOS + `/atenderPedido/${id}`;
-
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'token': this._us.token
@@ -65,7 +60,6 @@ export class PedidosService {
       return resp.producto;
     }), catchError(err => {
       Swal.fire(err.error.mensaje, err.error.err.message, 'error');
-      console.log(err.status);
       return throwError(err);
     }));
 

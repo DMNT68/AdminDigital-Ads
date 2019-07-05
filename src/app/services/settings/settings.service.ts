@@ -27,7 +27,6 @@ export class SettingsService {
       this.ajustes = JSON.parse(localStorage.getItem('ajustes'));
       this.aplicarTema(this.ajustes.tema);
     } else {
-      console.log('Usando valores por defecto');
       this.aplicarTema(this.ajustes.tema);
     }
 

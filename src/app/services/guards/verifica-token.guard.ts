@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UsuarioService } from '../usuario/usuario.service';
 
@@ -11,8 +11,7 @@ export class VerificaTokenGuard implements CanActivate {
   constructor(public _usuarioService: UsuarioService, public router: Router) {}
 
   canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Promise<boolean> | boolean {
+   ): Promise<boolean> | boolean {
 
     let token = this._usuarioService.token;
     let payload = JSON.parse(atob( token.split('.')[1]) );
@@ -23,7 +22,7 @@ export class VerificaTokenGuard implements CanActivate {
       return false;
     }
 
-    return true;
+    return this.verificaRenueva(payload.exp);
   }
 
   verificaRenueva(fechaExp: number): Promise<boolean> {

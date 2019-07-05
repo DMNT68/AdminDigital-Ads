@@ -23,12 +23,12 @@ const pagesRoutes: Routes = [
     {path: 'account-settings', component: AccountSettingComponent, data: {titulo: 'Ajustes de Tema'}},
     {path: 'perfil', component: ProfileComponent, data: {titulo: 'Perifl de usuario'}},
     // Mantenimientos
-    {path: 'usuarios', component: UsuariosComponent, canActivate: [AdminGuard], data: {titulo: 'Mantenimiento de Usuarios'}},
-    {path: 'categorias', component: CategoriasComponent, canActivate: [AdminGuard], data: {titulo: 'Mantenimiento de Categorías'}},
-    {path: 'productos', component: ProductosComponent, canActivate: [AdminGuard], data: {titulo: 'Mantenimiento de productos'}},
-    {path: 'producto/:id', component: ProductoComponent, canActivate: [AdminGuard], data: {titulo: 'Actualizar de producto'}},
-    {path: 'pedidos', component: PedidosComponent, canActivate: [AdminGuard], data: {titulo: 'Mantenimiento de pedidos'}},
-    {path: 'detalle-pedido/:id', component: DetallePedidoComponent, canActivate: [AdminGuard], data: {titulo: 'Mantenimientos del detalle'}},
+    {path: 'usuarios', component: UsuariosComponent, canActivate: [AdminGuard, VerificaTokenGuard], data: {titulo: 'Mantenimiento de Usuarios'}},
+    {path: 'categorias', component: CategoriasComponent, canActivate: [AdminGuard, VerificaTokenGuard], data: {titulo: 'Mantenimiento de Categorías'}},
+    {path: 'productos', component: ProductosComponent, canActivate: [AdminGuard, VerificaTokenGuard], data: {titulo: 'Mantenimiento de productos'}},
+    {path: 'producto/:id', component: ProductoComponent, canActivate: [AdminGuard, VerificaTokenGuard], data: {titulo: 'Actualizar de producto'}},
+    {path: 'pedidos', component: PedidosComponent, canActivate: [AdminGuard, VerificaTokenGuard], data: {titulo: 'Mantenimiento de pedidos'}},
+    {path: 'detalle-pedido/:id', component: DetallePedidoComponent, canActivate: [AdminGuard, VerificaTokenGuard], data: {titulo: 'Mantenimientos del detalle'}},
     {path: '', redirectTo: '/dashboard', pathMatch: 'full'}
 ];
 

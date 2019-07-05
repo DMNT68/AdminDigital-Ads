@@ -23,16 +23,20 @@ export class UsuarioService {
   menu: any[] = [];
 
   constructor(public http: HttpClient, public router: Router, public _subirArchivoServices: SubirArchivoService) { 
-    // console.log('Servicio de usuario listo');
     this.cargaStorage();
   }
 
   renuevaToken() {
 
     let url = URL_SERVICIOS + '/login/renuevaToken';
-    url += '?token=' + this.token;
+    // url += '?token=' + this.token;
 
-    return this.http.get(url)
+    let header = new HttpHeaders({
+      'Content-Type': 'application/json; charset=utf-8',
+      'token': this.token
+    });
+
+    return this.http.get(url, {headers: header})
     .pipe(map((resp: any) => {
 
       this.token = resp.token;
@@ -43,7 +47,6 @@ export class UsuarioService {
     catchError(err => {
       this.router.navigate(['/login']);
       Swal.fire('No se pudo renovar token', 'No fue posible renovar token', 'error');
-      console.log(err.status);
       return throwError(err);
     }));
 
@@ -122,7 +125,6 @@ export class UsuarioService {
     }),
     catchError(err => {
       Swal.fire('Error en el Login', err.error.mensaje, 'error');
-      console.log(err.status);
       return throwError(err);
     }));
   }
@@ -140,7 +142,6 @@ export class UsuarioService {
     }),
     catchError(err => {
       Swal.fire(err.error.mensaje, err.error.err.message, 'error');
-      console.log(err.status);
       return throwError(err);
     }));
 
@@ -169,7 +170,6 @@ export class UsuarioService {
     }),
     catchError(err => {
       Swal.fire(err.error.mensaje, err.error.err.message, 'error');
-      console.log(err.status);
       return throwError(err);
     }));
 
