@@ -97,16 +97,16 @@ export class UsuarioService {
 
   }
 
-  loginGoogle(token: string) {
+  // loginGoogle(token: string) {
 
-    let url = URL_SERVICIOS + '/login/google';
-    return this.http.post(url, { token })
-    .pipe(map((resp: any) => {
-      this.guardarStorage(resp.id, resp.token, resp.usuario, resp.menu);
-      return true;
-    }));
+  //   let url = URL_SERVICIOS + '/login/google';
+  //   return this.http.post(url, { token })
+  //   .pipe(map((resp: any) => {
+  //     this.guardarStorage(resp.id, resp.token, resp.usuario, resp.menu);
+  //     return true;
+  //   }));
 
-  }
+  // }
 
   
   login(usuario: Usuario, recordar: boolean = false) {

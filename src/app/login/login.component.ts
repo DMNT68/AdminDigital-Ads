@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     init_plugins();
-    this.googleInit();
+    // this.googleInit();
 
     this.email = localStorage.getItem('email') || '';
     if (this.email.length > 1) {
@@ -35,31 +35,31 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  googleInit() {
-    gapi.load('auth2', () => {
-      this.auth2 = gapi.auth2.init({
-        client_id: '702479151063-f9tspg1fschjf5771644mmlbnlpgm2mt.apps.googleusercontent.com',
-        cookiepolicy: 'single_host_origin', 
-        scope: 'profile email'
-      });
+  // googleInit() {
+  //   gapi.load('auth2', () => {
+  //     this.auth2 = gapi.auth2.init({
+  //       client_id: '702479151063-f9tspg1fschjf5771644mmlbnlpgm2mt.apps.googleusercontent.com',
+  //       cookiepolicy: 'single_host_origin', 
+  //       scope: 'profile email'
+  //     });
 
-      this.attachSignin(document.getElementById('btnGoogle'));
+  //     this.attachSignin(document.getElementById('btnGoogle'));
 
-    });
-  }
+  //   });
+  // }
 
-  attachSignin (element) {
+  // attachSignin (element) {
 
-    this.auth2.attachClickHandler(element, {}, (googleUser) => {
+  //   this.auth2.attachClickHandler(element, {}, (googleUser) => {
 
-      // let profile = googleUser.getBasicProfile();
-      let token = googleUser.getAuthResponse().id_token;
+  //     // let profile = googleUser.getBasicProfile();
+  //     let token = googleUser.getAuthResponse().id_token;
       
-      this._usuarioService.loginGoogle(token)
-      .subscribe(() => window.location.href = '#/dashboard');
-    });
+  //     this._usuarioService.loginGoogle(token)
+  //     .subscribe(() => window.location.href = '#/dashboard');
+  //   });
 
-  }
+  // }
 
   ingresar(forma: NgForm) {
 

@@ -1,5 +1,9 @@
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+
+import localeEs from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localeEs);
 
 // Rutas
 import { APP_ROUTES } from './app.routes';
@@ -21,6 +25,7 @@ import { PipesModule } from './pipes/pipes.module';
 
 // Modules
 import { SharedModule } from './shared/shared.module';
+import { } from '@angular/core';
 
 
 @NgModule({
@@ -39,7 +44,7 @@ import { SharedModule } from './shared/shared.module';
     PipesModule,
     SharedModule
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: 'es-ES' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -104,7 +104,7 @@
                     </thead>
                     <tbody *ngFor="let item of detalle">
                         <tr>
-                            <td><img [src]="item.producto.img | imagen:'producto'" class="img-50 img-circle"></td>
+                            <td><img [src]="item.producto.img | imagen:'producto'" class="img-50"></td>
                             <td>{{item.producto.nombre}}</td>
                             <td>{{item.cantidad}}</td>
                             <td>{{item.ancho}}x{{item.altura}}</td>
