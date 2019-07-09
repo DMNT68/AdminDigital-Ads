@@ -11,22 +11,26 @@
 
                         <div class="form-group">
                             <label>Nombre del Producto</label>
-                            <input [(ngModel)]="producto.nombre" name="nombre" type="text" class="form-control" placeholder="Nombre del producto">
+                            <input [(ngModel)]="producto.nombre" required="true" name="nombre" type="text" class="form-control" placeholder="Nombre del producto">
                         </div>
                         <div class="form-group">
                             <label>Precio Unitario</label>
-                            <input [(ngModel)]="producto.precioUni" name="precioUni" type="text" class="form-control" placeholder="Precio del producto">
+                            <input [(ngModel)]="producto.precioUni" required="true" name="precioUni" type="text" class="form-control" placeholder="Precio del producto">
                         </div>
                         <div class="form-group">
                             <label>Descripción</label>
-                            <textarea [(ngModel)]="producto.descripcion" row="5" name="descripcion" type="text" class="form-control" placeholder="Descripción del producto"></textarea>
+                            <textarea [(ngModel)]="producto.descripcion" row="5" required="true" name="descripcion" type="text" class="form-control" placeholder="Descripción del producto"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Imagen URL</label>
+                            <textarea [(ngModel)]="producto.img" row="5" required="true" name="img" type="text" class="form-control" placeholder="Dirección URL de la imagen"></textarea>
                         </div>
 
                         <div class="form-group">
 
                             <label>Categoría</label>
 
-                            <select (change)="cambioCategoria($event.target.value)" [(ngModel)]="producto.categoria" name="categoria" class="form-control">
+                            <select (change)="cambioCategoria($event.target.value)" [(ngModel)]="producto.categoria" required="true" name="categoria" class="form-control">
                               <option value="">Seleccione un categoría</option>
                               <option *ngFor="let categoria of categorias" [disabled]="!categoria.estado" [value]="categoria._id">
                                 {{categoria.descripcion}}
@@ -38,7 +42,7 @@
                         <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
                           <i class="fa fa-save"></i> Guardar
                         </button>
-                        <a routerLink="/productos" type="submit" class="btn btn-inverse waves-effect waves-light">Cancel</a>
+                        <a routerLink="/productos" type="submit" class="btn btn-inverse waves-effect waves-light">Atras</a>
 
                     </form>
                 </div>

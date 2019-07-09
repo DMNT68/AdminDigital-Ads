@@ -58,9 +58,8 @@ export class ProductoComponent implements OnInit {
     }
 
     this._productoService.guardarProducto( this.producto )
-    .subscribe(producto => {
-      this.producto._id = producto._id;
-      this.router.navigate(['/producto', producto._id]);
+    .subscribe((resp: Producto) => {
+      this.router.navigate(['/producto', resp._id]);
     });
 
   }
