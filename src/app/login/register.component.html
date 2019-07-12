@@ -19,7 +19,16 @@
 
                 <div class="form-group ">
                     <div class="col-xs-12">
-                        <input formControlName="correo" name="correo" formControlName="correo" name="correo" class="form-control" type="email" required placeholder="Correo">
+                        <input formControlName="correo" name="correo" class="form-control" type="email" required placeholder="Correo">
+                    </div>
+                </div>
+                <div *ngIf="forma.controls['correo'].errors?.pattern" class="invalid-feedback">
+                    Correo no válido.
+                </div>
+
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <input formControlName="telefono" name="telefono" class="form-control" minlength="6" maxlength="10" required placeholder="telefono">
                     </div>
                 </div>
 
@@ -27,6 +36,9 @@
                     <div class="col-xs-12">
                         <input formControlName="password" name="password" class="form-control" type="password" required placeholder="Contraseña">
                     </div>
+                </div>
+                <div class="form-group" *ngIf="forma.controls['password'].errors?.minLength">
+                    <p class="text-danger">Las contraseñas deben ser iguales</p>
                 </div>
 
                 <div class="form-group">

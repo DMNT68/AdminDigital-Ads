@@ -45,19 +45,20 @@ export class RegisterComponent implements OnInit {
 
     this.forma = new FormGroup({
       nombre: new FormControl(null, Validators.required),
-      correo: new FormControl(null, [Validators.required , Validators.email]),
-      password: new FormControl(null, Validators.required),
-      password2: new FormControl(null, Validators.required),
+      correo: new FormControl(null, [Validators.required , Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]),
+      telefono: new FormControl(null, [Validators.required, Validators.pattern('[0-9]*'), Validators.minLength(6), Validators.maxLength(10)]),
+      password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
+      password2: new FormControl(null, [Validators.required, Validators.minLength(6)]),
       condiciones: new FormControl(false)
     }, {validators: this.sonIguales('password', 'password2')});
 
-    this.forma.setValue({
-      nombre: 'Test',
-      correo: 'test@email.com',
-      password: '1234',
-      password2: '1234',
-      condiciones: true
-    });
+    // this.forma.setValue({
+    //   nombre: 'Test',
+    //   correo: 'test@email.com',
+    //   password: '1234',
+    //   password2: '1234',
+    //   condiciones: true
+    // });
   }
 
   registrarUsuario() {
@@ -74,6 +75,7 @@ export class RegisterComponent implements OnInit {
     let usuario = new Usuario(
       this.forma.value.nombre,
       this.forma.value.correo,
+      this.forma.value.telefono,
       this.forma.value.password
     );
 
