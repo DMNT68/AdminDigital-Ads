@@ -28,49 +28,54 @@
             <div class="card-body">
 
                 <h3 class="card-title">Usuarios Registrados ( <small>{{totalRegistros}}</small> )</h3>
-                <table class="table table-hover color-table primary-table">
-                    <thead>
-                        <tr>
-                            <th>Imagen</th>
-                            <th>Correo</th>
-                            <th>Nombre</th>
-                            <th>Teléfono</th>
-                            <th>Role</th>
-                            <th>Auth</th>
-                            <th>Estado</th>
-                            <th>Opciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let usuario of usuarios">
-                            <td class="w70">
-                                <img (click)="mostrarModal(usuario._id)" [src]="usuario.img | imagen" class="img-50 img-circle pointer">
-                            </td>
-                            <td>{{usuario.email}}</td>
-                            <td>{{usuario.nombre}}</td>
-                            <td>{{usuario.telefono}}</td>
-                            <td>
-                                <select [(ngModel)]="usuario.role" [disabled]="!usuario.estado" name="role" class="form-control">
-                                    <option value="ADMIN_ROLE">ADMIN_ROLE</option>
-                                    <option value="USER_ROLE">USER_ROLE</option>
-                                </select>
-                            </td>
-                            <td>
-                                <label *ngIf="usuario.google" class="label label-danger">Google</label>
-                                <label *ngIf="!usuario.google" class="label label-info">Normal</label>
-                            </td>
-                            <td>
-                                <label class="label label-light-primary">{{usuario.estado}}</label>
 
-                            </td>
-                            <td>
-                                <button (click)="guardarUsuario(usuario)" *ngIf="usuario.estado" class="btn btn-primary"><i class="fa fa-save"></i></button>
-                                <button (click)="borrarUsuario(usuario)" *ngIf="usuario.estado" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
-                                <button (click)="activarUsuario(usuario)" *ngIf="!usuario.estado" class="btn btn-success"><i class="fa fa-check-square"></i></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+
+                    <table class="table table-hover color-table primary-table">
+                        <thead>
+                            <tr>
+                                <th>Imagen</th>
+                                <th>Correo</th>
+                                <th>Nombre</th>
+                                <th>Teléfono</th>
+                                <th>Role</th>
+                                <th>Auth</th>
+                                <th>Estado</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let usuario of usuarios">
+                                <td class="w70">
+                                    <img (click)="mostrarModal(usuario._id)" [src]="usuario.img | imagen" class="img-50 img-circle pointer">
+                                </td>
+                                <td>{{usuario.email}}</td>
+                                <td>{{usuario.nombre}}</td>
+                                <td>{{usuario.telefono}}</td>
+                                <td>
+                                    <select [(ngModel)]="usuario.role" [disabled]="!usuario.estado" name="role" class="form-control">
+                                        <option value="ADMIN_ROLE">ADMIN_ROLE</option>
+                                        <option value="USER_ROLE">USER_ROLE</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <label *ngIf="usuario.google" class="label label-danger">Google</label>
+                                    <label *ngIf="!usuario.google" class="label label-info">Normal</label>
+                                </td>
+                                <td>
+                                    <label class="label label-light-primary">{{usuario.estado}}</label>
+
+                                </td>
+                                <td>
+                                    <button (click)="guardarUsuario(usuario)" *ngIf="usuario.estado" class="btn btn-primary"><i class="fa fa-save"></i></button>
+                                    <button (click)="borrarUsuario(usuario)" *ngIf="usuario.estado" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
+                                    <button (click)="activarUsuario(usuario)" *ngIf="!usuario.estado" class="btn btn-success"><i class="fa fa-check-square"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
 
                 <button (click)="cambiarDesde(-5)" class="btn btn-secondary"> Anteriores</button>
                 <button (click)="cambiarDesde(5)" class="btn btn-secondary"> Siguientes</button>

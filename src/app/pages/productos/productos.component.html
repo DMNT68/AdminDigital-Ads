@@ -45,30 +45,35 @@
 
                         </div>
 
-                        <table class="table table-hover color-table inverse-table">
-                            <thead>
-                                <tr>
-                                    <th>Imagen</th>
-                                    <th>Producto</th>
-                                    <th>Categoria</th>
-                                    <th>Disponible</th>
-                                    <th>Opciones</th>
-                                </tr>
-                            </thead>
-                            <tbody *ngFor="let producto of productos">
-                                <tr>
-                                    <td><img [src]="producto.img | imagen:'producto'" class="img-50"></td>
-                                    <td>{{producto.nombre}}</td>
-                                    <td>{{producto.categoria.descripcion}}</td>
-                                    <td><label class="label label-light-primary">{{producto.disponible}}</label></td>
-                                    <td>
-                                        <button [routerLink]="['/producto', producto._id]" *ngIf="producto.disponible" class="btn btn-primary" title="Modificar Producto"><i class="fa fa-edit"></i></button>
-                                        <button (click)="borrarProducto(producto)" *ngIf="producto.disponible" class="btn btn-danger" title="Desactivar Producto"><i class="fa fa-trash-o"></i></button>
-                                        <button (click)="activarProducto(producto)" *ngIf="!producto.disponible" class="btn btn-success" title="Activar Producto"><i class="fa fa-check-square"></i></button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="table-responsive">
+
+                            <table class="table table-hover color-table inverse-table">
+                                <thead>
+                                    <tr>
+                                        <th>Imagen</th>
+                                        <th>Producto</th>
+                                        <th>Categoria</th>
+                                        <th>Disponible</th>
+                                        <th>Opciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor="let producto of productos">
+                                    <tr>
+                                        <td><img [src]="producto.img | imagen:'producto'" class="img-50"></td>
+                                        <td>{{producto.nombre}}</td>
+                                        <td>{{producto.categoria.descripcion}}</td>
+                                        <td><label class="label label-light-primary">{{producto.disponible}}</label></td>
+                                        <td>
+                                            <button [routerLink]="['/producto', producto._id]" *ngIf="producto.disponible" class="btn btn-primary" title="Modificar Producto"><i class="fa fa-edit"></i></button>
+                                            <button (click)="borrarProducto(producto)" *ngIf="producto.disponible" class="btn btn-danger" title="Desactivar Producto"><i class="fa fa-trash-o"></i></button>
+                                            <button (click)="activarProducto(producto)" *ngIf="!producto.disponible" class="btn btn-success" title="Activar Producto"><i class="fa fa-check-square"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
                         <div *ngIf="habiltarBoton">
                             <button (click)="cambiarDesde(-5)" class="btn btn-secondary"> Anteriores</button>
                             <button (click)="cambiarDesde(5)" class="btn btn-secondary"> Siguientes</button>
