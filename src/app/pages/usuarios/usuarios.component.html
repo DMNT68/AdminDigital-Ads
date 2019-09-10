@@ -45,15 +45,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let usuario of usuarios">
+                            <tr *ngFor="let usuario of usuarios; let i = index">
                                 <td class="w70">
-                                    <img (click)="mostrarModal(usuario._id)" [src]="usuario.img | imagen" class="img-50 img-circle pointer">
+                                    <span *ngIf="!activos[i]" class="round round-primary">{{_usuarioServices.crearAvatar(usuario.nombre)}}</span>
+                                    <img *ngIf="activos[i]" [src]="usuario.img | imagen" class="img-50 img-circle">
                                 </td>
                                 <td>{{usuario.email}}</td>
                                 <td>{{usuario.nombre}}</td>
                                 <td>{{usuario.telefono}}</td>
                                 <td>
-                                    <select [(ngModel)]="usuario.role" [disabled]="!usuario.estado" name="role" class="form-control">
+                                    <select [(ngModel)]="usuario.role" [disabled]="!usuario.estado" name="role" class="form-control pointer">
                                         <option value="ADMIN_ROLE">ADMIN_ROLE</option>
                                         <option value="USER_ROLE">USER_ROLE</option>
                                     </select>
@@ -63,7 +64,8 @@
                                     <label *ngIf="!usuario.google" class="label label-info">Normal</label>
                                 </td>
                                 <td>
-                                    <label class="label label-light-primary">{{usuario.estado}}</label>
+                                    <label *ngIf="usuario.estado" class="label label-light-primary">Activado</label>
+                                    <label *ngIf="!usuario.estado" class="label label-light-danger">Bloqueado</label>
 
                                 </td>
                                 <td>

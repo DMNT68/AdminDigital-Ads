@@ -14,13 +14,15 @@ export class ProfileComponent implements OnInit {
 
   imagenSubir: File;
   imagenTemp: string;
-
+  imagenActiva: boolean = false;
+  avatar: string;
+  
   constructor(public _usuarioServices: UsuarioService) { 
-    this.usuario = _usuarioServices.usuario;
   }
 
   ngOnInit() {
-  }
+    this.usuario = this._usuarioServices.usuario;
+   }
 
   guardar(usuario: Usuario) {
     

@@ -18,18 +18,28 @@ export class UsuariosComponent implements OnInit {
   desde: number = 0;
   totalRegistros: number = 0;
   cargando: boolean = true;
+  activos: boolean [] = []; 
 
   constructor(public _usuarioServices: UsuarioService, public _modalUploadService: ModalUploadService) { }
 
   ngOnInit() {
     this.cargarUsuarios();
-    
-    this._modalUploadService.notificacion
-    .subscribe(resp => this.cargarUsuarios());
+    // this._modalUploadService.notificacion.subscribe(() => this.cargarUsuarios());
   }
 
   mostrarModal(id: string) {
     this._modalUploadService.mostarMoldal('usuarios', id);
+  }
+
+  cargarActivos() {
+
+    for (let i = 0; i < this.usuarios.length; i++) {
+
+      this._usuarioServices.imagenExistente(this.usuarios[i].img).
+      subscribe((resp: any) => this.activos[i] = resp.ok);
+      
+    }
+
   }
 
   cargarUsuarios() {
@@ -41,6 +51,7 @@ export class UsuariosComponent implements OnInit {
 
       this.totalRegistros = resp.total;
       this.usuarios = resp.usuarios;
+      this.cargarActivos();
       this.cargando = false;
 
     });

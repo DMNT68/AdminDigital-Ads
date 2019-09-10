@@ -21,6 +21,9 @@ export class DetallePedidoComponent implements OnInit {
   img: string;
   totalItems: number;
 
+  imagenActiva: boolean;
+  avatar: string;
+
   constructor( public activatedRoute: ActivatedRoute, private _ps: PedidosService, public _us: UsuarioService) { }
 
   ngOnInit() {
@@ -48,6 +51,8 @@ export class DetallePedidoComponent implements OnInit {
       this.img = resp.orden.usuario.img;
       this.detalle = resp.detalles;
       this.totalItems = resp.total;
+      this._us.imagenExistente(this.img).subscribe((ok: any) => this.imagenActiva = ok.ok);
+      this.avatar = this._us.crearAvatar(this.nombre);
 
     });
 

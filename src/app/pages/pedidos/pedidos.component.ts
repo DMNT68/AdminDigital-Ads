@@ -21,7 +21,7 @@ export class PedidosComponent implements OnInit {
   getPedidos() {
     this._ps.cargarPedidos().subscribe((resp: any) => {
         for (let i = 0; i < resp.length; i++) {
-          if (!resp[i].atendido){
+          if (!resp[i].atendido) {
             this.pedidosNoAtendidos.push(resp[i]);
           } else if (resp[i].atendido) {
             this.pedidosAtendidos.push(resp[i]);

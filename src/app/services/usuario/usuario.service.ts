@@ -220,4 +220,19 @@ export class UsuarioService {
 
   }
 
+  imagenExistente(img: string) {
+    
+    let url = `${URL_SERVICIOS}/imagen-existe/usuarios/${img}`;
+    
+    return this.http.get(url);
+    
+  }
+
+  crearAvatar(nombre: string) {
+    let arregloNombre = nombre.split(' ');
+    let avatar = arregloNombre.map(letra => letra.charAt(0)).slice(0, 2).join('');
+    avatar.toUpperCase();
+    return avatar;
+  }
+
 }

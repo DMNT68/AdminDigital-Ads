@@ -40,7 +40,14 @@
                         <div class="form-group">
                             <label class="control-label"> Fotografía: </label>
                             <div align="center">
-                                <img [src]="img | imagen" class="w150">
+                                <div *ngIf="!imagenActiva" class="col-md-6 col-lg-4 col-xlg-2">
+                                    <div class="card">
+                                        <div class="box bg-primary text-center">
+                                            <h1 class="font-light text-white">{{avatar}}</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                                <img *ngIf="imagenActiva" [src]="img | imagen" class="w150">
                             </div>
                         </div>
                     </div>
