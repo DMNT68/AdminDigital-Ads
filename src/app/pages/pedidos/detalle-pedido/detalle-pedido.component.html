@@ -13,24 +13,24 @@
                     <div class="col-md-6">
 
                         <div class="form-group">
-                            <label class="control-label">Nombrel:</label>
+                            <label class="control-label font-bold">Nombre:</label>
                             <div class="input-group">
                                 <label type="text" class="form-control">{{nombre}}</label>
-                                <div class="input-group-addon"><i class="ti-email"></i></div>
+                                <div class="input-group-addon"><i class="ti-user"></i></div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label">Email:</label>
+                            <label class="control-label font-bold">Email:</label>
                             <div class="input-group">
                                 <label type="text" class="form-control">{{email}}</label>
                                 <div class="input-group-addon"><i class="ti-email"></i></div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label">Teléfono:</label>
+                            <label class="control-label font-bold">Teléfono:</label>
                             <div class="input-group">
                                 <label type="text" class="form-control">{{telefono}}</label>
-                                <div class="input-group-addon"><i class="ti-email"></i></div>
+                                <div class="input-group-addon"><i class="ti-mobile"></i></div>
                             </div>
                         </div>
 
@@ -38,7 +38,7 @@
                     <!--/span-->
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label"> Fotografía: </label>
+                            <label class="control-label font-bold"> Fotografía: </label>
                             <div align="center">
                                 <div *ngIf="!imagenActiva" class="col-md-6 col-lg-4 col-xlg-2">
                                     <div class="card">
@@ -65,7 +65,7 @@
                 <hr class="m-t-0 m-b-40">
 
                 <div class="form-group row">
-                    <label class="col-sm-3 control-label">Fecha:</label>
+                    <label class="col-sm-3 control-label font-bold">Fecha:</label>
                     <div class="col-sm-9">
                         <div class="input-group">
                             <label type="text" class="form-control">{{maestro.fechaCreacion | date:'fullDate'}}</label>
@@ -74,7 +74,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-3 control-label">Número de productos:</label>
+                    <label class="col-sm-3 control-label font-bold">Número de productos:</label>
                     <div class="col-sm-9">
                         <div class="input-group">
                             <label type="text" class="form-control">{{totalItems}}</label>
@@ -83,7 +83,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-3 control-label">Atendido:</label>
+                    <label class="col-sm-3 control-label font-bold">Atendido:</label>
                     <div class="col-sm-9">
                         <div class="input-group">
                             <label type="text" class="form-control" *ngIf="maestro.atendido">SI</label>
@@ -111,7 +111,7 @@
                         </thead>
                         <tbody *ngFor="let item of detalle">
                             <tr>
-                                <td><img [src]="item.producto.img | imagen:'producto'" class="img-50"></td>
+                                <td><img [src]="item.producto.img | imagen:'producto'" class="img-50 img-rounded"></td>
                                 <td>{{item.producto.nombre}}</td>
                                 <td>{{item.cantidad}}</td>
                                 <td>{{item.ancho}}x{{item.altura}}</td>

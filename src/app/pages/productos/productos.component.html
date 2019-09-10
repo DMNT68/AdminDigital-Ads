@@ -59,7 +59,7 @@
                                 </thead>
                                 <tbody *ngFor="let producto of productos">
                                     <tr>
-                                        <td><img [src]="producto.img | imagen:'producto'" class="img-50"></td>
+                                        <td><img [src]="producto.img | imagen:'producto'" class="img-50 img-rounded"></td>
                                         <td>{{producto.nombre}}</td>
                                         <td>{{producto.categoria.descripcion}}</td>
                                         <td><label class="label label-light-primary">{{producto.disponible}}</label></td>
